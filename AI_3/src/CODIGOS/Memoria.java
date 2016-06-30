@@ -47,7 +47,7 @@ public class Memoria {
         
             String resposta = JOptionPane.showInputDialog(null,"Digite uma resposta para essa pergunta: ","AI_3",JOptionPane.WARNING_MESSAGE);
             
-            if(!resposta.equals("cancela")){
+            if(!(resposta.equals("cancel") || resposta.equals("cancela") || resposta.equals("cancelar"))){
                 try {
                 arq.createNewFile();
             } catch (IOException ex1) {

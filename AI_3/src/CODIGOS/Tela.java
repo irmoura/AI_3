@@ -5,12 +5,14 @@
  */
 package CODIGOS;
 
+import java.awt.Color;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -61,6 +63,7 @@ public class Tela extends javax.swing.JFrame {
         btn_send = new javax.swing.JButton();
         btn_clear = new javax.swing.JButton();
         jLabelTimerLoggedIn = new javax.swing.JLabel();
+        palavras_gravadas = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -74,6 +77,11 @@ public class Tela extends javax.swing.JFrame {
         TEXTO_CONVERSA.setEditable(false);
         TEXTO_CONVERSA.setColumns(20);
         TEXTO_CONVERSA.setRows(5);
+        TEXTO_CONVERSA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TEXTO_CONVERSAMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(TEXTO_CONVERSA);
 
         btn_send.setText("Send");
@@ -93,6 +101,8 @@ public class Tela extends javax.swing.JFrame {
         jLabelTimerLoggedIn.setText("Time Logged In :");
         jLabelTimerLoggedIn.setPreferredSize(new java.awt.Dimension(57, 23));
 
+        palavras_gravadas.setText("00");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -103,13 +113,14 @@ public class Tela extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                     .addComponent(TEXTO_USUARIO)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabelTimerLoggedIn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btn_send)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_clear)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(jLabelTimerLoggedIn, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btn_send)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_clear)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(palavras_gravadas)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -122,7 +133,8 @@ public class Tela extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_send)
-                    .addComponent(btn_clear))
+                    .addComponent(btn_clear)
+                    .addComponent(palavras_gravadas))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelTimerLoggedIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(23, Short.MAX_VALUE))
@@ -134,6 +146,8 @@ public class Tela extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
+        
+        TEXTO_CONVERSA.setBackground(Color.yellow);
         
         Diretorio.pastaPrincipal();
         
@@ -259,6 +273,33 @@ public class Tela extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btn_clearActionPerformed
 
+    private void TEXTO_CONVERSAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TEXTO_CONVERSAMouseClicked
+        // TODO add your handling code here:
+        
+        //JOptionPane.showMessageDialog(null,"Teste");
+        
+        Random random = new Random();
+        int na = random.nextInt(4);//NUMEROS ALEATORIOS ENTRE 0 E 3
+        
+        switch (na) {
+        case 0:
+            TEXTO_CONVERSA.setBackground(Color.yellow);
+            break;
+        case 1:
+            TEXTO_CONVERSA.setBackground(Color.green);
+            break;
+        case 2:
+            TEXTO_CONVERSA.setBackground(Color.blue);
+            break;
+        case 3:
+            TEXTO_CONVERSA.setBackground(Color.red);
+            break;
+        default:
+            break;
+            }
+        
+    }//GEN-LAST:event_TEXTO_CONVERSAMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -305,5 +346,6 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabelTimerLoggedIn;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel palavras_gravadas;
     // End of variables declaration//GEN-END:variables
 }
