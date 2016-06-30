@@ -41,10 +41,14 @@ public class Memoria {
             CODIGOS.Tela.TEXTO_CONVERSA.setText(""+tela_da_conversa+"\nPC : "+Resposta+" "+CODIGOS.Tela.nome);
              
         }//FIM ARQUIVO ENCONTRADO
-//FIM ARQUIVO NAO ENCONTRADO
          catch (FileNotFoundException ex) {//INICIO ARQUIVO NAO ENCONTRADO
             
-            try {
+            CODIGOS.Tela.TEXTO_CONVERSA.setText(""+tela_da_conversa+"\nPC : "+CODIGOS.Tela.TEXTO_USUARIO.getText()+" ???");
+        
+            String resposta = JOptionPane.showInputDialog(null,"Digite uma resposta para essa pergunta: ","AI_3",JOptionPane.WARNING_MESSAGE);
+            
+            if(!resposta.equals("cancela")){
+                try {
                 arq.createNewFile();
             } catch (IOException ex1) {
                 Logger.getLogger(Memoria.class.getName()).log(Level.SEVERE, null, ex1);
@@ -58,25 +62,18 @@ public class Memoria {
             Logger.getLogger(Memoria.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        CODIGOS.Tela.TEXTO_CONVERSA.setText(""+tela_da_conversa+"\nPC : "+CODIGOS.Tela.TEXTO_USUARIO.getText()+" ???");
-        
-        String resposta = JOptionPane.showInputDialog(null,"Digite uma resposta para essa pergunta: ","AI_3",JOptionPane.QUESTION_MESSAGE);
-        
         PrintWriter gravarArq = new PrintWriter(Obs); 
         {
-              gravarArq.println(resposta);//LINHA DA RESPOSTA
- 
+                gravarArq.println(resposta);//LINHA DA RESPOSTA
         }
         try {
             Obs.close();
         } catch (IOException exi) {
             Logger.getLogger(Memoria.class.getName()).log(Level.SEVERE, null, ex);
         }
+            }
             
-        }//FIM ARQUIVO NAO ENCONTRADO        catch (IOException ex) {
-            
-            //Logger.getLogger(GUI_Principal.class.getName()).log(Level.SEVERE, null, ex);
-            
-        }
+        }//FIM ARQUIVO NAO ENCONTRADO       
+    }
         
 }

@@ -17,10 +17,7 @@ public class Verificador {
         
         String tela_da_conversa = CODIGOS.Tela.TEXTO_CONVERSA.getText();
         
-        if(!(frase_usuario.contains("-")) || 
-           !(frase_usuario.contains("+")) || 
-           !(frase_usuario.contains("*")) || 
-           !(frase_usuario.contains("/")) &&  !frase_usuario.equals("")){
+        if(!frase_usuario.equals("")){
             
         String frase = frase_usuario.replace(" ",";");
             String[] s = frase.split(";");

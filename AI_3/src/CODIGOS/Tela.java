@@ -22,7 +22,7 @@ import javax.swing.Timer;
  */
 public class Tela extends javax.swing.JFrame {
     
-    public static String nome = JOptionPane.showInputDialog(null,"Qual seu nome ?","AI_3",JOptionPane.QUESTION_MESSAGE);
+    public static String nome = "Mael";//JOptionPane.showInputDialog(null,"Qual seu nome ?","AI_3",JOptionPane.QUESTION_MESSAGE);
     
     public Timer timer;
     
