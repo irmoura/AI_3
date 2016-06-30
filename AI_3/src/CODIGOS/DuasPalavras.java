@@ -5,27 +5,29 @@
  */
 package CODIGOS;
 
+import java.io.IOException;
+
 /**
  *
  * @author Ibyte
  */
 public class DuasPalavras {
-    public static void Duas_Frases(String p1, String p2){
+    public static void Duas_Frases(String p1, String p2) throws IOException{
         
         String tela_da_conversa = CODIGOS.Tela.TEXTO_CONVERSA.getText();
         
         if(
-          (p1.equals("bom")) || (p1.equals("Bom")) || (p1.equals("BOM"))
+          (p1.equals("que")) || (p1.equals("Que")) || (p1.equals("QUE"))
           ){
             if(
-          (p2.equals("dia")) || (p2.equals("Dia")) || (p2.equals("DIA"))
+          (p2.equals("horas")) || (p2.equals("Horas")) || (p2.equals("HORAS"))
             ){
-                CODIGOS.Tela.TEXTO_CONVERSA.setText(""+tela_da_conversa+"\nPC : "+"Bom dia Ismael");
+                CODIGOS.UmaPalavra.Uma_Frase("horas");
             }
         }
         else
         {
-            CODIGOS.Tela.TEXTO_CONVERSA.setText(""+tela_da_conversa+"\nPC : "+p1+" "+p2+" ???");
+            CODIGOS.Memoria.verificaFrase(""+p1+" "+p2);
         }
     }
 }

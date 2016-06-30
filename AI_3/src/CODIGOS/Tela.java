@@ -10,6 +10,10 @@ import java.awt.KeyboardFocusManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 /**
@@ -17,6 +21,8 @@ import javax.swing.Timer;
  * @author Ibyte
  */
 public class Tela extends javax.swing.JFrame {
+    
+    public static String nome = JOptionPane.showInputDialog(null,"Qual seu nome ?","AI_3",JOptionPane.QUESTION_MESSAGE);
     
     public Timer timer;
     
@@ -228,15 +234,19 @@ public class Tela extends javax.swing.JFrame {
         
         tela_da_conversa = TEXTO_CONVERSA.getText();
         
-        if(tela_da_conversa.equals("")){
-            TEXTO_CONVERSA.setText(""+tela_da_conversa+"Ismael : "+TEXTO_USUARIO.getText());
+        if(!TEXTO_USUARIO.getText().equals("") && tela_da_conversa.equals("")){
+            TEXTO_CONVERSA.setText(""+tela_da_conversa+nome+" : "+TEXTO_USUARIO.getText());
         }
         else
-        if(!tela_da_conversa.equals("")){
-            TEXTO_CONVERSA.setText(""+tela_da_conversa+"\nIsmael : "+TEXTO_USUARIO.getText());
+        if(!TEXTO_USUARIO.getText().equals("") &&  !tela_da_conversa.equals("")){
+            TEXTO_CONVERSA.setText(""+tela_da_conversa+"\n"+nome+" : "+TEXTO_USUARIO.getText());
         }
         
-        CODIGOS.Verificador.resposta(TEXTO_USUARIO.getText());
+        try {
+            CODIGOS.Verificador.resposta(TEXTO_USUARIO.getText());
+        } catch (IOException ex) {
+            Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         TEXTO_USUARIO.setText("");
         
@@ -289,7 +299,7 @@ public class Tela extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTextArea TEXTO_CONVERSA;
-    private javax.swing.JTextField TEXTO_USUARIO;
+    public static javax.swing.JTextField TEXTO_USUARIO;
     private javax.swing.JButton btn_clear;
     private javax.swing.JButton btn_send;
     private javax.swing.JButton jButton1;

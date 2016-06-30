@@ -5,14 +5,23 @@
  */
 package CODIGOS;
 
+import java.io.IOException;
+
 /**
  *
  * @author Ibyte
  */
 public class Verificador {
     
-    public static void resposta(String frase_usuario){
+    public static void resposta(String frase_usuario) throws IOException{
         
+        String tela_da_conversa = CODIGOS.Tela.TEXTO_CONVERSA.getText();
+        
+        if(!(frase_usuario.contains("-")) || 
+           !(frase_usuario.contains("+")) || 
+           !(frase_usuario.contains("*")) || 
+           !(frase_usuario.contains("/")) &&  !frase_usuario.equals("")){
+            
         String frase = frase_usuario.replace(" ",";");
             String[] s = frase.split(";");
             
@@ -34,6 +43,10 @@ public class Verificador {
             break;
         default:
             break;
+            }
+        }
+        else{
+            CODIGOS.Tela.TEXTO_CONVERSA.setText(""+tela_da_conversa+"\nPC : "+"???");
         }
     }
 }
