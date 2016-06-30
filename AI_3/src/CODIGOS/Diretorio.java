@@ -40,7 +40,7 @@ public class Diretorio {
             }
             if(letra.equals("Z")){
                 mostraMensagem("O diretório "+pasta_do_programa+" não existe em lugar nenhum.","Aviso");
-                //System.exit(0);
+                System.exit(0);
         }
     }
 }
