@@ -30,6 +30,7 @@ public class Verificador {
         
     switch (s.length) {
         case 1:
+            //OQueE.informador(CODIGOS.Tela.TEXTO_USUARIO.getText());
             UmaPalavra.Uma_Frase(palavras_separadas[0]);
             break;
         case 2:

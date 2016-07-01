@@ -270,6 +270,7 @@ public class Tela extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         TEXTO_CONVERSA.setText("");
+        TEXTO_USUARIO.setText("");
         
     }//GEN-LAST:event_btn_clearActionPerformed
 
